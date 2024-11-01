@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<ruleset name="DAVEDOESTHINGS Website Security Headers PHPCS Ruleset">
+
+	<!-- Explicitly point to where WPCS lives in the project -->
+	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs" />
+
+	<!-- Excludes  -->
+	<exclude-pattern>assets/*</exclude-pattern>
+	<exclude-pattern>languages/*</exclude-pattern>
+	<exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>phpcs.xml</exclude-pattern>
+
+	<!-- Don't get angry about checking files that don't contain code -->
+	<rule ref="Internal.NoCodeFound">
+		<severity>0</severity>
+	</rule>
+
+	<!-- Ignore mixed line-endings warnings -->
+	<rule ref="Internal.LineEndings.Mixed">
+		<severity>0</severity>
+	</rule>
+
+	<!-- Internal exceptions (often occur on minified files) -->
+	<rule ref="Internal.Tokenizer.Exception">
+		<severity>0</severity>
+	</rule>
+
+	<!-- Add in some extra rules from other standards. -->
+	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+	<rule ref="Generic.Commenting.Todo"/>
+
+	<!-- Allow square bracket array syntax -->
+	<rule ref="Generic.Arrays.DisallowShortArraySyntax.Found">
+		<severity>0</severity>
+	</rule>
+	
+	<!-- Include the WordPress Extra (Core + Extras) ruleset, with exclusions. -->
+	<rule ref="WordPress-Extra">
+		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
+		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+	</rule>
+
+	<!-- Include the WordPress Documentation ruleset  -->
+	<rule ref="WordPress-Docs" />
+
+	<!-- WP: Warn when the posts per page value is too high -->
+	<rule ref="WordPress.WP.PostsPerPage">
+		<properties>
+			<property name="posts_per_page" value="250"/>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array" value="ddt_wsh" />
+		</properties>
+	</rule>
+
+	<!-- Ensure that any i18n functions have a valid project-specific textdomain -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="davedoesthings-wsh" />
+		</properties>
+	</rule>
+
+	<!-- Ensure that we're not using any functions deprecated three major versions ago -->
+	<rule ref="WordPress.WP.DeprecatedFunctions">
+		<properties>
+			<property name="minimum_supported_version" value="5.4" />
+		</properties>
+	</rule>
+</ruleset>

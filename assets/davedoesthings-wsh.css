@@ -1,0 +1,36 @@
+.davedoesthings-wsh--wrap {
+	max-width: 50rem;
+}
+
+.davedoesthings-wsh--card {
+	max-width: 100%;
+}
+
+.davedoesthings-wsh--card label {
+	vertical-align: top;
+}
+
+.davedoesthings-wsh--card tr:nth-child(even) {
+	border-top: 1px solid #f0f0f1;
+}
+
+.davedoesthings-wsh--card p.davedoesthings-wsh--desc {
+	font-style: italic;
+	margin-top: 0.625rem;
+}
+
+.davedoesthings-wsh--card .davedoesthings-wsh--field {
+	margin-top: 0.3125rem;
+	max-width: 100%;
+}
+
+.davedoesthings-wsh--card input.davedoesthings-wsh--input:not( [type="checkbox"] ),
+.davedoesthings-wsh--card textarea.davedoesthings-wsh--input,
+.davedoesthings-wsh--card select.davedoesthings-wsh--input {
+	max-width: 28.125rem;
+	width: 100%;
+}
+
+.davedoesthings-wsh--advisory {
+	color: #DC3232;
+}
